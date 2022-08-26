@@ -1,0 +1,70 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Bond",
+        "repositoryURL": "https://github.com/DeclarativeHub/Bond",
+        "state": {
+          "branch": null,
+          "revision": "146943c0bc03a93c48fb6c57db4e39f4b38ba74b",
+          "version": "7.8.1"
+        }
+      },
+      {
+        "package": "Differ",
+        "repositoryURL": "https://github.com/tonyarnold/Differ.git",
+        "state": {
+          "branch": null,
+          "revision": "5520fda947f1f9777a806389c2ba587219bc0538",
+          "version": "1.4.6"
+        }
+      },
+      {
+        "package": "Layoutless",
+        "repositoryURL": "https://github.com/DeclarativeHub/Layoutless",
+        "state": {
+          "branch": null,
+          "revision": "50ae5ab4cb9bf676c1901f4ba0f267f27e68d0a7",
+          "version": "0.4.3"
+        }
+      },
+      {
+        "package": "Metric",
+        "repositoryURL": "https://github.com/Fleuronic/Metric",
+        "state": {
+          "branch": "main",
+          "revision": "e5eac20ea12987a9805184232bd16085133ec3da",
+          "version": null
+        }
+      },
+      {
+        "package": "ReactiveKit",
+        "repositoryURL": "https://github.com/DeclarativeHub/ReactiveKit.git",
+        "state": {
+          "branch": null,
+          "revision": "dfb63f820aa54946c4cbcbe1b6024863a143d3a2",
+          "version": "3.19.1"
+        }
+      },
+      {
+        "package": "ReactiveSwift",
+        "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "c43bae3dac73fdd3cb906bd5a1914686ca71ed3c",
+          "version": "6.7.0"
+        }
+      },
+      {
+        "package": "Workflow",
+        "repositoryURL": "https://github.com/square/workflow-swift",
+        "state": {
+          "branch": null,
+          "revision": "1a94348132146c90d60f06748b52f64fb9e10177",
+          "version": "1.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
