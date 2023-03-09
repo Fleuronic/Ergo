@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import protocol WorkflowConcurrency.Worker
+import WorkflowConcurrency
 
 public struct RequestWorker<Result> {
 	private let request: Request

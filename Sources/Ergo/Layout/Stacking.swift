@@ -1,10 +1,9 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
+import UIKit
+import Layoutless
+
 import enum Metric.Spacing
-import class UIKit.UIStackView
-import struct Layoutless.Layout
-import func Layoutless.stack
-import protocol Layoutless.AnyLayout
 
 public protocol Stacking: Layoutable {
 	static var verticalSpacing: Spacing.Vertical { get }

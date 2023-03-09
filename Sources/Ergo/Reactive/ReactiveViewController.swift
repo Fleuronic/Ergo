@@ -1,13 +1,9 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import class UIKit.UIView
-import class UIKit.NSLayoutConstraint
-import class WorkflowUI.ScreenViewController
-import class ReactiveKit.Subject
-import struct ReactiveKit.SafeSignal
-import struct WorkflowUI.ViewEnvironment
-import struct Bond.Bond
-import protocol WorkflowUI.Screen
+import UIKit
+import WorkflowUI
+import ReactiveKit
+import Bond
 
 class ReactiveViewController<View: UIView & Layoutable>: ScreenViewController<View.Screen> {
 	private typealias Context = (View.Screen, ViewEnvironment)

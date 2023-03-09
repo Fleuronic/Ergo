@@ -1,8 +1,8 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import struct ReactiveKit.SafeSignal
-import struct Bond.Bond
-import protocol WorkflowUI.Screen
+import ReactiveKit
+import Bond
+import WorkflowUI
 
 @dynamicMemberLookup public protocol ScreenProxy<Screen> {
 	associatedtype Screen: WorkflowUI.Screen

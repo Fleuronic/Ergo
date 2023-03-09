@@ -1,10 +1,7 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import class UIKit.UIView
-import struct WorkflowUI.ViewEnvironment
-import struct WorkflowUI.ViewControllerDescription
-import protocol WorkflowUI.Screen
-
+import UIKit
+import WorkflowUI
 import Inject
 
 public protocol ReactiveScreen: Screen where View.Screen == Self {

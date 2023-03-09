@@ -1,6 +1,7 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import protocol WorkflowConcurrency.Worker
+import WorkflowConcurrency
+
 import struct Metric.Delay
 
 public struct DelayedWorker {

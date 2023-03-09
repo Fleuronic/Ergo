@@ -1,7 +1,7 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import protocol WorkflowUI.Screen
-import protocol Layoutless.AnyLayout
+import Layoutless
+import WorkflowUI
 
 public protocol Layoutable {
 	associatedtype Screen: WorkflowUI.Screen
