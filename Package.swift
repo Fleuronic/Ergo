@@ -36,7 +36,7 @@ let package = Package(
 				"Metric",
 				"Inject",
 				.product(name: "WorkflowUI", package: "workflow-swift"),
-				.product(name: "WorkflowConcurrency", package: "workflow-swift")
+				.product(name: "WorkflowReactiveSwift", package: "workflow-swift")
 			],
 			path: "Sources/Ergo"
 		),
