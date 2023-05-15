@@ -59,6 +59,15 @@ extension ReactiveViewController: ScreenProxy {
 		)
 	}
 
+	subscript<T>(dynamicMember keyPath: KeyPath<View.Screen, T>) -> Property<T?> {
+		.init(
+			initial: screen[keyPath: keyPath],
+			then: context.output.map { screen, _ in
+				screen[keyPath: keyPath]
+			}
+		)
+	}
+
 	subscript(dynamicMember keyPath: KeyPath<View.Screen, () -> Void>) -> BindingTarget<Void> {
 		.init(
 			lifetime: .of(self),
