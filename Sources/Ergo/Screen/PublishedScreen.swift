@@ -5,7 +5,7 @@ import WorkflowUI
 import Inject
 
 public protocol PublishedScreen: Screen where View.Screen == Self {
-	associatedtype View: ScreenBacked
+	associatedtype View: ScreenBackedView
 }
 
 // MARK: -

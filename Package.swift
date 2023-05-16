@@ -13,9 +13,9 @@ let package = Package(
 		)
     ],
     dependencies: [
-        .package(url: "https://github.com/square/workflow-swift", from: "1.0.0-rc.1"),
+        .package(url: "https://github.com/square/workflow-swift", from: "1.0.0"),
 		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.0"),
-		.package(url: "https://github.com/Fleuronic/Inject.git", branch: "main")
+		.package(url: "https://github.com/Fleuronic/Inject", branch: "main")
     ],
     targets: [
         .target(

@@ -3,7 +3,7 @@
 import SwiftUI
 import WorkflowUI
 
-public protocol ScreenBacked {
+public protocol ScreenBackedView {
 	associatedtype Body: SwiftUI.View
 	associatedtype Screen: WorkflowUI.Screen
 

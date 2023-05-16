@@ -5,7 +5,7 @@ import UIKit
 import WorkflowUI
 import ReactiveSwift
 
-class PublishedViewController<View: ScreenBacked>: ScreenViewController<View.Screen> where View.Screen: PublishedScreen {
+class PublishedViewController<View: ScreenBackedView>: ScreenViewController<View.Screen> where View.Screen: PublishedScreen {
 	private let screenPublisher: ScreenPublisher<View.Screen>
 	private let hostingController: UIHostingController<PublishedView<View>>
 
