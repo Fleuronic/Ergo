@@ -4,7 +4,7 @@ import UIKit
 import SwiftUI
 import Workflow
 
-struct PublishedView<View: Bodied> where View.Screen: PublishedScreen {
+struct PublishedView<View: ScreenBacked> where View.Screen: PublishedScreen {
 	private let view: View
 
 	@ObservedObject

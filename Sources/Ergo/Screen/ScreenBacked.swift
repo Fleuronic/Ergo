@@ -3,8 +3,8 @@
 import SwiftUI
 import WorkflowUI
 
-public protocol Bodied {
-	associatedtype Body: View
+public protocol ScreenBacked {
+	associatedtype Body: SwiftUI.View
 	associatedtype Screen: WorkflowUI.Screen
 
 	init()
