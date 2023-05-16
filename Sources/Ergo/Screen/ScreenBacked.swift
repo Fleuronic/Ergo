@@ -9,5 +9,5 @@ public protocol ScreenBacked {
 
 	init()
 
-	func body(with screen: Screen) -> Body
+	func body(backedBy screen: Screen) -> Body
 }

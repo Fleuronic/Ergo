@@ -22,6 +22,6 @@ struct PublishedView<View: ScreenBacked> where View.Screen: PublishedScreen {
 // MARK: -
 extension PublishedView: SwiftUI.View {
 	var body: some SwiftUI.View {
-		view.body(with: screenPublisher.screen)
+		view.body(backedBy: screenPublisher.screen)
 	}
 }
