@@ -1,0 +1,3 @@
+[submodule "ErgoUIKit"]
+	path = Submodules/ErgoUIKit
+	url = https://github.com/Fleuronic/ErgoUIKit
