@@ -6,13 +6,10 @@ import Inject
 
 public protocol PublishedScreen: Screen where View.Screen == Self {
 	associatedtype View: Bodied
-	associatedtype Strings
 }
 
 // MARK: -
 public extension PublishedScreen {
-	typealias ScreenString = (Strings.Type) -> String
-
 	// MARK: Screen
 	func viewControllerDescription(environment: ViewEnvironment) -> ViewControllerDescription {
 		.init(
