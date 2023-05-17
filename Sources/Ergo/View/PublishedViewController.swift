@@ -24,7 +24,7 @@ class PublishedViewController<View: ScreenBackedView>: ScreenViewController<View
 	required init(screen: View.Screen, environment: ViewEnvironment) {
 		screenPublisher = .init(screen: screen)
 		hostingController = .init(
-			rootView: PublishedView(
+			rootView: .init(
 				view: View(),
 				screenPublisher: screenPublisher
 			)
