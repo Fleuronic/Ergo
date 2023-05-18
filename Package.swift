@@ -14,15 +14,15 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/square/workflow-swift", from: "1.0.0"),
-		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.0"),
-		.package(url: "https://github.com/Fleuronic/Inject", branch: "main")
+		.package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", branch: "swift-concurrency"),
+		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.0")
     ],
     targets: [
         .target(
             name: "Ergo",
 			dependencies: [
 				"EnumKit",
-				"Inject",
+				"ReactiveSwift",
 				.product(name: "WorkflowUI", package: "workflow-swift"),
 				.product(name: "WorkflowReactiveSwift", package: "workflow-swift")
 			]
