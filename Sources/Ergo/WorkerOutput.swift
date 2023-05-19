@@ -17,11 +17,14 @@ public protocol WorkerOutput {
 extension Result: CaseAccessible {}
 
 extension Result: WorkerOutput {
+	// MARK: WorkerOutput
 	public var success: Success? { associatedValue() }
 	public var failure: Failure? { associatedValue() }
 }
 
+// MARK: -
 extension Optional: WorkerOutput {
+	// MARK: WorkerOutput
 	public typealias Success = Self
 	public typealias Failure = Never
 

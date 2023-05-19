@@ -1,7 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
 import Workflow
-import WorkflowUI
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction> (

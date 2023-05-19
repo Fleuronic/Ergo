@@ -92,6 +92,7 @@ public extension Worker where Input == Void {
 
 // MARK: -
 extension Worker: WorkflowReactiveSwift.Worker {
+	// MARK: Worker
 	public func run() -> SignalProducer<Output, Never> {
 		switch state {
 		case let .working(input):
