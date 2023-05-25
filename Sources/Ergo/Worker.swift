@@ -42,7 +42,7 @@ public extension Worker {
 		state.associatedValue().map { ($0, { self.state = .ready }) }
 	}
 
-	func work(with input: Input) {
+	func start(with input: Input) {
 		state = .working(input)
 	}
 
@@ -82,6 +82,10 @@ public extension Worker {
 
 // MARK: -
 public extension Worker where Input == Void {
+    func start() {
+        start(with: ())
+    }
+    
 	static func working(by work: @escaping Work) -> Self {
 		.init(
 			state: .working(()),
