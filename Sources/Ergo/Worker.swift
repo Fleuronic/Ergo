@@ -11,7 +11,7 @@ public final class Worker<Input, Output: WorkerOutput> {
 
 	private var state: State
 
-	init(
+	private init(
 		state: State,
 		work: @escaping Work
 	) {
@@ -22,7 +22,8 @@ public final class Worker<Input, Output: WorkerOutput> {
 
 // MARK: -
 public extension Worker {
-	typealias Work = (Input) async -> Output
+	typealias Work = (Input) -> AsyncStream<Output>
+    typealias Return = (Input) async -> Output
 
 	enum State: CaseAccessible {
 		case ready
@@ -61,21 +62,28 @@ public extension Worker {
 			return action!
 		}
 	}
+    
+    static func ready(to work: @escaping Work) -> Self {
+        .init(
+            state: .ready,
+            work: work
+        )
+    }
 
-	static func ready(to work: @escaping Work) -> Self {
+	static func ready(to return: @escaping Return) -> Self {
 		.init(
 			state: .ready,
-			work: work
+			return: `return`
 		)
 	}
 
 	static func working(
 		with input: Input,
-		by work: @escaping Work
+		to return: @escaping Return
 	) -> Self {
 		.init(
 			state: .working(input),
-			work: work
+            return: `return`
 		)
 	}
 }
@@ -86,7 +94,14 @@ public extension Worker where Input == Void {
         start(with: ())
     }
     
-	static func working(by work: @escaping Work) -> Self {
+    static func working(to return: @escaping Return) -> Self {
+        .init(
+            state: .working(()),
+            return: `return`
+        )
+    }
+    
+	static func working(to work: @escaping Work) -> Self {
 		.init(
 			state: .working(()),
 			work: work
@@ -102,14 +117,16 @@ extension Worker: WorkflowReactiveSwift.Worker {
 		case let .working(input):
 			return .init { observer, _ in
 				Task {
-					let output = await self.work(input)
-					if let success = output.success {
-						self.state = .ready
-						observer.send(value: .success(success))
-					} else if let failure = output.failure {
-						self.state = .failed(failure)
-						observer.send(value: .failure(failure))
-					}
+                    for await output in self.work(input) {
+                        if let success = output.success {
+                            self.state = .ready
+                            observer.send(value: .success(success))
+                        } else if let failure = output.failure {
+                            self.state = .failed(failure)
+                            observer.send(value: .failure(failure))
+                            return
+                        }
+                    }
 					observer.sendCompleted()
 				}
 			}
@@ -121,4 +138,24 @@ extension Worker: WorkflowReactiveSwift.Worker {
 	public func isEquivalent(to otherWorker: Worker<Input, Output>) -> Bool {
 		false
 	}
+}
+
+// MARK: -
+private extension Worker {
+    convenience init(
+        state: State,
+        return: @escaping Return
+    ) {
+        self.init(
+            state: state,
+            work: { input in
+                .init { continuation in
+                    Task {
+                        continuation.yield(await `return`(input))
+                        continuation.finish()
+                    }
+                }
+            }
+        )
+    }
 }
