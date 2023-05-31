@@ -11,7 +11,7 @@ public final class Worker<Input, Output: WorkerOutput> {
 
 	private var state: State
 
-	private init(
+	init(
 		state: State,
 		work: @escaping Work
 	) {
@@ -110,6 +110,26 @@ public extension Worker where Input == Void {
 }
 
 // MARK: -
+extension Worker {
+    convenience init(
+        state: State,
+        return: @escaping Return
+    ) {
+        self.init(
+            state: state,
+            work: { input in
+                .init { continuation in
+                    Task {
+                        continuation.yield(await `return`(input))
+                        continuation.finish()
+                    }
+                }
+            }
+        )
+    }
+}
+
+// MARK: -
 extension Worker: WorkflowReactiveSwift.Worker {
 	// MARK: Worker
 	public func run() -> SignalProducer<Output, Never> {
@@ -138,24 +158,4 @@ extension Worker: WorkflowReactiveSwift.Worker {
 	public func isEquivalent(to otherWorker: Worker<Input, Output>) -> Bool {
 		false
 	}
-}
-
-// MARK: -
-private extension Worker {
-    convenience init(
-        state: State,
-        return: @escaping Return
-    ) {
-        self.init(
-            state: state,
-            work: { input in
-                .init { continuation in
-                    Task {
-                        continuation.yield(await `return`(input))
-                        continuation.finish()
-                    }
-                }
-            }
-        )
-    }
 }
