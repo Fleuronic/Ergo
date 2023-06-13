@@ -1,13 +1,11 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
 import Workflow
-import WorkflowReactiveSwift
-import ReactiveSwift
+import WorkflowConcurrency
 import EnumKit
 
 public final class Worker<Input, Output: WorkerOutput> {
 	private let work: Work
-	private let noop = SignalProducer<Output, Never>.never
 
 	private var state: State
 
@@ -27,7 +25,7 @@ public extension Worker {
 
 	enum State: CaseAccessible {
 		case ready
-		case working(Input)
+		case working(Input, initial: Bool = true)
 		case failed(Output.Failure)
 	}
 
@@ -86,6 +84,16 @@ public extension Worker {
             return: `return`
 		)
 	}
+
+	static func working(
+		with input: Input,
+		to work: @escaping Work
+	) -> Self {
+		.init(
+			state: .working(input),
+			work: work
+		)
+	}
 }
 
 // MARK: -
@@ -129,29 +137,30 @@ extension Worker {
     }
 }
 
-// MARK: -
-extension Worker: WorkflowReactiveSwift.Worker {
+// MARK: -
+extension Worker: WorkflowConcurrency.Worker {
 	// MARK: Worker
-	public func run() -> SignalProducer<Output, Never> {
+	public func run() -> AsyncStream<Output> {
 		switch state {
-		case let .working(input):
-			return .init { observer, _ in
+		case let .working(input, true):
+			state = .working(input, initial: false)
+			return .init { continuation in
 				Task {
-                    for await output in self.work(input) {
-                        if let success = output.success {
-                            self.state = .ready
-                            observer.send(value: .success(success))
-                        } else if let failure = output.failure {
-                            self.state = .failed(failure)
-                            observer.send(value: .failure(failure))
-                            return
-                        }
-                    }
-					observer.sendCompleted()
+					for await output in self.work(input) {
+						if let success = output.success {
+							continuation.yield(.success(success))
+						} else if let failure = output.failure {
+							self.state = .failed(failure)
+							continuation.yield(.failure(failure))
+							return
+						}
+					}
+					self.state = .ready
+					continuation.finish()
 				}
 			}
 		default:
-			return noop
+			return .init { $0.finish() }
 		}
 	}
 

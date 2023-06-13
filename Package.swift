@@ -24,7 +24,7 @@ let package = Package(
 				"EnumKit",
 				"ReactiveSwift",
 				.product(name: "WorkflowUI", package: "workflow-swift"),
-				.product(name: "WorkflowReactiveSwift", package: "workflow-swift")
+				.product(name: "WorkflowConcurrency", package: "workflow-swift")
 			]
 		)
     ]
