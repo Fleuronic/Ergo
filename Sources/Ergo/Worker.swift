@@ -20,7 +20,7 @@ public final class Worker<Input, Output: WorkerOutput> {
 
 // MARK: -
 public extension Worker {
-	typealias Work = (Input) -> AsyncStream<Output>
+	typealias Work = (Input) async -> AsyncStream<Output>
     typealias Return = (Input) async -> Output
 
 	enum State: CaseAccessible {
@@ -146,7 +146,7 @@ extension Worker: WorkflowConcurrency.Worker {
 			state = .working(input, initial: false)
 			return .init { continuation in
 				Task {
-					for await output in self.work(input) {
+					for await output in await self.work(input) {
 						if let success = output.success {
 							continuation.yield(.success(success))
 						} else if let failure = output.failure {

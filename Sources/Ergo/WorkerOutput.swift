@@ -2,7 +2,7 @@
 
 import EnumKit
 
-public protocol WorkerOutput {
+public protocol WorkerOutput<Success> {
 	associatedtype Success
 	associatedtype Failure
 
