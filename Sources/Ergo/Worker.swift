@@ -42,6 +42,7 @@ public extension Worker {
 	}
 
 	func start(with input: Input) {
+        guard isReady else { return }
 		state = .working(input)
 	}
 
