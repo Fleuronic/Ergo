@@ -9,7 +9,7 @@ public extension RenderContext {
 		render: (Sink<Action>) -> Rendering,
 		@WorkflowBuilder running workflows: () -> [AnyWorkflow<Void, Action>] = { [] }
 	) -> Rendering where Action.WorkflowType == WorkflowType {
-		workflows().forEach { $0.running(in: self, key: UUID().uuidString) }
+        workflows().enumerated().forEach { $1.running(in: self, key: "\($0)") }
 		return render(makeSink(of: Action.self))
 	}
 }

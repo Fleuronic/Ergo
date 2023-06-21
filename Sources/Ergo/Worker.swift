@@ -50,6 +50,10 @@ public extension Worker {
 			.mapOutput(\.success)
 			.mapOutput(action)
 	}
+    
+    func flatMapSuccess<T, Action: WorkflowAction>(_ action: @escaping (Output.Success) -> Action) -> AnyWorkflow<Void, Action> where Output.Success == Optional<T> {
+        mapSuccess { $0.map(action) ?? action(nil) }
+    }
 
 	func mapResult<Action: WorkflowAction>(
 		success: @escaping (Output.Success) -> Action,
