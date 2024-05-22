@@ -1,31 +1,32 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.10
 import PackageDescription
 
 let package = Package(
-    name: "Ergo",
-    platforms: [
-        .iOS(.v14)
-    ],
-    products: [
-        .library(
-            name: "Ergo",
-            targets: ["Ergo"]
+	name: "Ergo",
+	platforms: [
+		.iOS(.v13),
+		.macOS(.v10_15),
+		.tvOS(.v13),
+		.watchOS(.v6),
+	],
+	products: [
+		.library(
+			name: "Ergo",
+			targets: ["Ergo"]
 		)
-    ],
-    dependencies: [
-        .package(url: "https://github.com/Fleuronic/workflow-swift", branch: "main"),
-		.package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", branch: "swift-concurrency"),
+	],
+	dependencies: [
+		.package(url: "https://github.com/Fleuronic/workflow-swift", branch: "main"),
 		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.3")
-    ],
-    targets: [
-        .target(
-            name: "Ergo",
+	],
+	targets: [
+		.target(
+			name: "Ergo",
 			dependencies: [
 				"EnumKit",
-				"ReactiveSwift",
 				.product(name: "WorkflowUI", package: "workflow-swift"),
 				.product(name: "WorkflowConcurrency", package: "workflow-swift")
 			]
 		)
-    ]
+	]
 )

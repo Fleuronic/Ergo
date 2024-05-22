@@ -1,4 +1,5 @@
 {
+  "originHash" : "ad4d4da7768b54f984e720670064bf7c9188df3b704b4ab8dd0cf2a64a7d2338",
   "pins" : [
     {
       "identity" : "enumkit",
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
       "state" : {
-        "branch" : "swift-concurrency",
-        "revision" : "3d40187c982346352d0adbe6b38e0e3d53fddc95"
+        "revision" : "40c465af19b993344e84355c00669ba2022ca3cd",
+        "version" : "7.1.1"
       }
     },
     {
@@ -24,9 +25,9 @@
       "location" : "https://github.com/Fleuronic/workflow-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "1bb353fd8d9af0a3a853a1518c542d00cc3e3ca4"
+        "revision" : "5c54471e85d8fdceea2ec28e4bee6818d20a72bb"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
