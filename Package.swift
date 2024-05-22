@@ -15,7 +15,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Fleuronic/workflow-swift", branch: "main"),
 		.package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", branch: "swift-concurrency"),
-		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.0")
+		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.3")
     ],
     targets: [
         .target(
