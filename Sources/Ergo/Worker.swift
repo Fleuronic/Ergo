@@ -141,7 +141,7 @@ extension Worker {
 	}
 }
 
-// MARK: - 
+// MARK: -
 extension Worker: WorkflowConcurrency.Worker {
 	// MARK: Worker
 	public func run() -> AsyncStream<Output> {
