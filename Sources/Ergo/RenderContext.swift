@@ -2,8 +2,6 @@
 
 import Workflow
 
-import struct Foundation.UUID
-
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction> (
 		render: (Sink<Action>) -> Rendering,
