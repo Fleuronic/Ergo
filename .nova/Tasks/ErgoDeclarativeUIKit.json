@@ -1,0 +1,16 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\ncd Submodules\/ErgoDeclarativeUIKit\nxcodebuild -scheme ErgoDeclarativeUIKit -destination generic\/platform=iOS"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nrm -rf Submodules\/ErgoDeclarativeUIKit\/.build"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nswift package update --package-path Submodules\/ErgoDeclarativeUIKit"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\ncd Submodules\/ErgoSwiftUI\nxcodebuild -scheme ErgoSwiftUI -destination generic\/platform=iOS"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nrm -rf Submodules\/ErgoSwiftUI\/.build"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "#!\/bin\/sh\nswift package update --package-path Submodules\/ErgoSwiftUI"
+    }
+  }
+}

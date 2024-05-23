@@ -1,0 +1,20 @@
+{
+  "eablokker.tabsSidebar.config.collapsedFolders" : [
+
+  ],
+  "eablokker.tabsSidebar.config.customKindGroupsOrder" : [
+    "swift",
+    "xml",
+    "json"
+  ],
+  "eablokker.tabsSidebar.config.customTabOrder" : [
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/Submodules\/ErgoSwiftUI\/Sources\/ErgoSwiftUI\/ScreenObservingView.swift",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/Package.swift",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/Sources\/Ergo\/ScreenBacked.swift",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/Submodules\/ErgoDeclarativeUIKit\/Sources\/ErgoDeclarativeUIKit\/LayoutBackingScreen.swift",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/Sources\/Ergo\/Worker.swift",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/.swiftpm\/xcode\/xcuserdata\/jordan.xcuserdatad\/xcschemes\/xcschememanagement.plist",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/.swiftpm\/xcode\/package.xcworkspace\/xcuserdata\/jordan.xcuserdatad\/UserInterfaceState.xcuserstate",
+    "file:\/\/\/Users\/jordan\/Files\/Development\/Ergo\/.nova\/Configuration.json"
+  ]
+}
