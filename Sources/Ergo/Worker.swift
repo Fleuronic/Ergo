@@ -159,7 +159,7 @@ extension Worker: WorkflowConcurrency.Worker {
 						}
 					}
 
-					if state ~= State.working { state = .ready }
+					if isWorking { state = .ready }
 					continuation.finish()
 				}
 			}
