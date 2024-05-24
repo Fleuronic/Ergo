@@ -150,16 +150,16 @@ extension Worker: WorkflowConcurrency.Worker {
 			state = .working(input, initial: false)
 			return .init { continuation in
 				Task {
-					for await output in await self.work(input) {
+					for await output in await work(input) {
 						if let success = output.success {
 							continuation.yield(.success(success))
 						} else if let failure = output.failure {
-							self.state = .failed(failure)
+							state = .failed(failure)
 							continuation.yield(.failure(failure))
-							return
 						}
 					}
-					self.state = .ready
+
+					if state ~= State.working { state = .ready }
 					continuation.finish()
 				}
 			}
