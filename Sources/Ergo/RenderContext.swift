@@ -7,7 +7,11 @@ public extension RenderContext {
 		render: (Sink<Action>) -> Rendering,
 		@WorkflowBuilder running workflows: () -> [AnyWorkflow<Void, Action>] = { [] }
 	) -> Rendering where Action.WorkflowType == WorkflowType {
-		workflows().enumerated().forEach { $1.running(in: self, key: "\($0)") }
+		workflows().enumerated().forEach { index, workflow in
+			let key = index > 0 ? "\(index)" : .init()
+			workflow.running(in: self, key: key) 
+		}
+		
 		return render(makeSink(of: Action.self))
 	}
 }
