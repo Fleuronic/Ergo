@@ -2,11 +2,13 @@
 
 import EnumKit
 import Workflow
-import WorkflowConcurrency
+import WorkflowReactiveSwift
+import ReactiveSwift
 
 public final class Worker<Input, Output: WorkerOutput> {
 	private let work: Work
-
+	private let noop = SignalProducer<Output, Never>.never
+	
 	private var state: State
 
 	init(
@@ -142,29 +144,29 @@ extension Worker {
 }
 
 // MARK: -
-extension Worker: WorkflowConcurrency.Worker {
+extension Worker: WorkflowReactiveSwift.Worker {
 	// MARK: Worker
-	public func run() -> AsyncStream<Output> {
+	public func run() -> SignalProducer<Output, Never> {
 		switch state {
 		case let .working(input, true):
 			state = .working(input, initial: false)
-			return .init { continuation in
+			return .init { observer, _ in
 				Task {
-					for await output in await work(input) {
+					for await output in await self.work(input) {
 						if let success = output.success {
-							continuation.yield(.success(success))
+							observer.send(value: .success(success))
 						} else if let failure = output.failure {
-							state = .failed(failure)
-							continuation.yield(.failure(failure))
+							self.state = .failed(failure)
+							observer.send(value: .failure(failure))
 						}
 					}
 
-					if isWorking { state = .ready }
-					continuation.finish()
+					if self.isWorking { self.state = .ready }
+					observer.sendCompleted()
 				}
 			}
 		default:
-			return .init { $0.finish() }
+			return noop
 		}
 	}
 
