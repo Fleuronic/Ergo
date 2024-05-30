@@ -1,5 +1,5 @@
 {
-  "originHash" : "f266563b490f7916034899ae38ac8aa67a9bb5c9f0441a3e60e80393fb1c6c5b",
+  "originHash" : "62d0398af1383a1a0358edd769327a73cc7c6cb4ce031f8fa079df500f84b678",
   "pins" : [
     {
       "identity" : "enumkit",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/Fleuronic/workflow-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "e6798d9e5c5fdf890fbdcdd59deaeb93257dc7d8"
+        "revision" : "5b432e699247ef70c369ea7d54c4e24140e30945"
       }
     }
   ],
