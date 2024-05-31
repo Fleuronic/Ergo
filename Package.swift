@@ -24,6 +24,8 @@ let package = Package(
 			name: "Ergo",
 			dependencies: [
 				"EnumKit",
+				.product(name: "WorkflowUI", package: "workflow-swift"),
+				.product(name: "WorkflowMenuUI", package: "workflow-swift"),
 				.product(name: "WorkflowReactiveSwift", package: "workflow-swift")
 			]
 		)
