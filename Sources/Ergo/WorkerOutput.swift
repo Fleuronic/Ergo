@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import EnumKit
+import protocol EnumKit.CaseAccessible
 
 public protocol WorkerOutput<Success> {
 	associatedtype Success

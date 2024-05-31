@@ -1,9 +1,11 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
 import EnumKit
-import Workflow
-import WorkflowReactiveSwift
-import ReactiveSwift
+
+import struct Workflow.AnyWorkflow
+import struct ReactiveSwift.SignalProducer
+import protocol Workflow.WorkflowAction
+import protocol WorkflowReactiveSwift.Worker
 
 public final class Worker<Input, Output: WorkerOutput> {
 	private let work: Work

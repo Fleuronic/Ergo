@@ -1,6 +1,9 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import Workflow
+import struct Workflow.Sink
+import struct Workflow.AnyWorkflow
+import class Workflow.RenderContext
+import protocol Workflow.WorkflowAction
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction> (
