@@ -2,7 +2,7 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\ncd Submodules\/ErgoDeclarativeUIKit\nxcodebuild -quiet -scheme ErgoDeclarativeUIKit -destination generic\/platform=iOS"
+      "script" : "#!\/bin\/sh\nxcodebuild -quiet -scheme ErgoDeclarativeUIKit -destination generic\/platform=iOS"
     },
     "clean" : {
       "enabled" : true,

@@ -2,11 +2,11 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nxcodebuild -quiet -scheme ErgoUIKit -destination generic\/platform=iOS"
+      "script" : "#!\/bin\/sh\ncd Submodules\/ErgoAppKit\nxcodebuild -quiet -scheme ErgoAppKit -destination generic\/platform=macOS"
     },
     "clean" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nrm -rf Submodules\/ErgoUIKit\/.build"
+      "script" : "#!\/bin\/sh\nrm -rf Submodules\/ErgoAppKit\/.build"
     },
     "run" : {
       "enabled" : true,
