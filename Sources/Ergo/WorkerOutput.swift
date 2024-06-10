@@ -2,7 +2,7 @@
 
 import protocol EnumKit.CaseAccessible
 
-public protocol WorkerOutput<Success> {
+public protocol WorkerOutput {
 	associatedtype Success
 	associatedtype Failure
 

@@ -7,14 +7,12 @@ import protocol Workflow.WorkflowAction
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction> (
-		render: (Sink<Action>) -> Rendering,
-		@WorkflowBuilder running workflows: () -> [AnyWorkflow<Void, Action>] = { [] }
+		workflows: [AnyWorkflow<Void, Action>] = [],
+		keyedWorkflows: [String: AnyWorkflow<Void, Action>] = [:],
+		render: (Sink<Action>) -> Rendering
 	) -> Rendering where Action.WorkflowType == WorkflowType {
-		workflows().enumerated().forEach { index, workflow in
-			let key = index > 0 ? "\(index)" : .init()
-			workflow.running(in: self, key: key) 
-		}
-		
+		workflows.forEach { workflow in workflow.running(in: self) }
+		keyedWorkflows.forEach { key, workflow in workflow.running(in: self, key: key) }
 		return render(makeSink(of: Action.self))
 	}
 }
