@@ -2,7 +2,7 @@
 
 import protocol EnumKit.CaseAccessible
 
-public protocol WorkerOutput {
+public protocol WorkerOutput<Success> {
 	associatedtype Success
 	associatedtype Failure
 
@@ -14,7 +14,7 @@ public protocol WorkerOutput {
 }
 
 // MARK: -
-extension Result: CaseAccessible {}
+extension Result: @retroactive CaseAccessible {}
 
 extension Result: WorkerOutput {
 	// MARK: WorkerOutput
@@ -26,11 +26,11 @@ extension Result: WorkerOutput {
 extension Optional: WorkerOutput {
 	// MARK: WorkerOutput
 	public typealias Success = Self
-	public typealias Failure = Never
+	public typealias Failure = Void?
 
 	public var success: Success? { self }
 	public var failure: Failure? { nil }
 
 	public static func success(_ success: Success) -> Self { success }
-	public static func failure(_ failure: Failure) -> Self {}
+	public static func failure(_ failure: Failure) -> Self { nil }
 }
