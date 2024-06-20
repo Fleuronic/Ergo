@@ -6,7 +6,7 @@ public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction & Sendable> (
 		workflows: [AnyWorkflow<Void, Action>]? = nil,
 		keyedWorkflows: [String: AnyWorkflow<Void, Action>]? = nil,
-		sideEffects: [String: SideEffect<Action>]? = nil,
+		sideEffects: [AnyHashable: SideEffect<Action>]? = nil,
 		render: (Sink<Action>) -> Rendering
 	) -> Rendering where Action.WorkflowType == WorkflowType {
 		workflows?.forEach { workflow in workflow.running(in: self) }
@@ -16,7 +16,9 @@ public extension RenderContext {
 		sideEffects?.forEach { key, action in
 			runSideEffect(key: key) { lifetime in
 				Task { @MainActor in
-					await action(lifetime).map(sink.send)
+					if let action = await action(lifetime) {
+						sink.send(action)
+					}
 				}
 			}
 		}
