@@ -2,7 +2,7 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nxcodebuild -quiet -scheme ErgoDeclarativeUIKit -destination generic\/platform=iOS"
+      "script" : "#!\/bin\/sh\nswift build \\\n\t--target ErgoDeclarativeUIKit \\\n\t-Xswiftc \"-target\" \\\n\t-Xswiftc \"arm64-apple-macosx14.0\""
     },
     "clean" : {
       "enabled" : true,
@@ -10,7 +10,7 @@
     },
     "run" : {
       "enabled" : true,
-      "script" : "#!\/bin\/sh\nswift package update --package-path Submodules\/ErgoDeclarativeUIKit"
+      "script" : "#!\/bin\/sh\nswift build \\\n\t--target ErgoUIKit \\\n\t--package-path Submodules\/ErgoDeclarativeUIKit \\\n\t-Xswiftc \"-sdk\" \\\n\t-Xswiftc \"`xcrun --sdk iphonesimulator --show-sdk-path`\" \\\n\t-Xswiftc \"-target\" \\\n\t-Xswiftc \"x86_64-apple-ios18.0-simulator\""
     }
   }
 }
