@@ -1,22 +1,13 @@
 {
-  "originHash" : "5dfb5bdf807a946b0e146c46b557284206452417b6c38860e57f21e8c16097c4",
+  "originHash" : "2f7adf7c7229e08c980c636d963ae5080953a50bb901590df21d55d13bc09130",
   "pins" : [
-    {
-      "identity" : "enumkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/gringoireDM/EnumKit",
-      "state" : {
-        "revision" : "ae639dfac5c7116abb64c5f62124915f627140e4",
-        "version" : "1.1.3"
-      }
-    },
     {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
       "state" : {
-        "revision" : "40c465af19b993344e84355c00669ba2022ca3cd",
-        "version" : "7.1.1"
+        "branch" : "sendable",
+        "revision" : "302100cf9c31f9d63991e7c7167374247932fe88"
       }
     },
     {
@@ -25,7 +16,7 @@
       "location" : "https://github.com/Fleuronic/workflow-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "aa39ec136ea66988eda063268efe862e1bfb95f6"
+        "revision" : "3785f9dc2e1c9fec91e59eae76030497260a8dac"
       }
     }
   ],

@@ -2,8 +2,6 @@
 
 import ReactiveSwift
 
-import protocol EnumKit.CaseAccessible
-
 public protocol WorkerOutput<Success> {
 	associatedtype Success
 	associatedtype Failure: Error
@@ -12,8 +10,6 @@ public protocol WorkerOutput<Success> {
 }
 
 // MARK: -
-extension Result: @retroactive CaseAccessible {}
-
 extension Result: WorkerOutput {
 	// MARK: WorkerOutput
 	public var results: AsyncStream<Result<Success, Failure>> {
@@ -37,6 +33,7 @@ extension Optional: WorkerOutput {
 	}
 }
 
+// MARK: -
 extension Array: WorkerOutput {
 	// MARK: WorkerOutput
 	public var results: AsyncStream<Result<Self, Never>> {
@@ -47,6 +44,7 @@ extension Array: WorkerOutput {
 	}
 }
 
+// MARK: -
 extension SignalProducer: WorkerOutput {
 	public var results: AsyncStream<Result<Value, Error>> {
 		.init { continuation in
@@ -67,5 +65,3 @@ extension SignalProducer: WorkerOutput {
 		}
 	}
 }
-
-extension Signal.Observer: @retroactive @unchecked Sendable {}

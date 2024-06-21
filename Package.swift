@@ -16,14 +16,12 @@ let package = Package(
 		)
 	],
 	dependencies: [
-		.package(url: "https://github.com/gringoireDM/EnumKit", from: "1.1.3"),
 		.package(url: "https://github.com/Fleuronic/workflow-swift", branch: "main")
 	],
 	targets: [
 		.target(
 			name: "Ergo",
 			dependencies: [
-				"EnumKit",
 				.product(name: "Workflow", package: "workflow-swift"),
 				.product(name: "WorkflowConcurrency", package: "workflow-swift"),
 				.product(name: "WorkflowReactiveSwift", package: "workflow-swift")
