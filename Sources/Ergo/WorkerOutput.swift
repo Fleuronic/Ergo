@@ -1,6 +1,7 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import ReactiveSwift
+import struct Identity.Identifier
+import struct ReactiveSwift.SignalProducer
 
 public protocol WorkerOutput<Success> {
 	associatedtype Success
@@ -28,17 +29,6 @@ extension Optional: WorkerOutput {
 			if let value = self {
 				continuation.yield(.success(value))
 			}
-			continuation.finish()
-		}
-	}
-}
-
-// MARK: -
-extension Array: WorkerOutput {
-	// MARK: WorkerOutput
-	public var results: AsyncStream<Result<Self, Never>> {
-		.init { continuation in
-			continuation.yield(.success(self))
 			continuation.finish()
 		}
 	}
