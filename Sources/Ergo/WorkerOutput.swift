@@ -1,7 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import struct Identity.Identifier
-import struct ReactiveSwift.SignalProducer
+@preconcurrency import ReactiveSwift
 
 public protocol WorkerOutput<Success> {
 	associatedtype Success
@@ -10,8 +9,11 @@ public protocol WorkerOutput<Success> {
 	var results: AsyncStream<Result<Success, Failure>> { get }
 }
 
+
 // MARK: -
-extension Result: WorkerOutput {
+extension Result: WorkerOutput {}
+
+extension Result where Success: Sendable {
 	// MARK: WorkerOutput
 	public var results: AsyncStream<Result<Success, Failure>> {
 		.init { continuation in
@@ -23,6 +25,11 @@ extension Result: WorkerOutput {
 
 // MARK: -
 extension Optional: WorkerOutput {
+	public typealias Success = Wrapped
+	public typealias Failure = Never
+}
+
+extension Optional where Wrapped: Sendable {
 	// MARK: WorkerOutput
 	public var results: AsyncStream<Result<Wrapped, Never>> {
 		.init { continuation in
@@ -36,6 +43,11 @@ extension Optional: WorkerOutput {
 
 // MARK: -
 extension SignalProducer: WorkerOutput {
+	public typealias Success = Value
+	public typealias Failure = Error
+}
+
+extension SignalProducer where Value: Sendable {
 	public var results: AsyncStream<Result<Value, Error>> {
 		.init { continuation in
 			let disposable = start { event in
@@ -55,3 +67,4 @@ extension SignalProducer: WorkerOutput {
 		}
 	}
 }
+

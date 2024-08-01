@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import Workflow
+@preconcurrency import Workflow
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction & Sendable> (
@@ -14,7 +14,7 @@ public extension RenderContext {
 
 		let sink = makeSink(of: Action.self)
 		sideEffects?.forEach { key, action in
-			runSideEffect(key: key) { lifetime in
+			runSideEffect(key: key) { @Sendable lifetime in
 				let task = Task { @MainActor in
 					if let action = await action(lifetime) {
 						sink.send(action)
