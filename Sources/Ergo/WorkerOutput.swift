@@ -9,7 +9,6 @@ public protocol WorkerOutput<Success> {
 	var results: AsyncStream<Result<Success, Failure>> { get }
 }
 
-
 // MARK: -
 extension Result: WorkerOutput {}
 
@@ -61,7 +60,7 @@ extension SignalProducer where Value: Sendable {
 				}
 			}
 
-			continuation.onTermination = { @Sendable _ in
+			continuation.onTermination = { _ in
 				disposable.dispose()
 			}
 		}
