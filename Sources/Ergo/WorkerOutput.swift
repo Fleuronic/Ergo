@@ -67,3 +67,5 @@ extension SignalProducer where Value: Sendable {
 	}
 }
 
+// MARK: -
+extension Signal.Observer: @retroactive @unchecked Sendable {}
