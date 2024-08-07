@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-@preconcurrency import ReactiveSwift
+import ReactiveSwift
 
 public protocol WorkerOutput<Success> {
 	associatedtype Success
@@ -66,6 +66,3 @@ extension SignalProducer where Value: Sendable {
 		}
 	}
 }
-
-// MARK: -
-extension Signal.Observer: @retroactive @unchecked Sendable {}
