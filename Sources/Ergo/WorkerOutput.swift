@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import ReactiveSwift
+@preconcurrency public import ReactiveSwift
 
 public protocol WorkerOutput<Success> {
 	associatedtype Success

@@ -1,13 +1,13 @@
 {
-  "originHash" : "2c1deb049d6cfe4c3f86612464003433cd84aed25b3fd0fb008a416ca2196d6f",
+  "originHash" : "f2a51e237258b7bacb26bf49870cadb672b88daad561c98656e2c9593c22745f",
   "pins" : [
     {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Fleuronic/ReactiveSwift.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "2dc9b62ee7a2aff72bab49f5f3f6a71fa09d1537"
+        "branch" : "main",
+        "revision" : "db54c7d9b7cf3ed89962eac4b28a4c05df855956"
       }
     },
     {
@@ -16,7 +16,7 @@
       "location" : "https://github.com/Fleuronic/workflow-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "717512e3d98b9ccc17448dc423ca4b366fe0dc35"
+        "revision" : "91e659bff5994fb582c8b220c65e4e7fa7b9eeb0"
       }
     }
   ],

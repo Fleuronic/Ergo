@@ -1,6 +1,6 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
-import Workflow
+public import Workflow
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction & Sendable> (
