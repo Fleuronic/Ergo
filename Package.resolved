@@ -1,5 +1,4 @@
 {
-  "originHash" : "f2a51e237258b7bacb26bf49870cadb672b88daad561c98656e2c9593c22745f",
   "pins" : [
     {
       "identity" : "reactiveswift",
@@ -16,9 +15,9 @@
       "location" : "https://github.com/Fleuronic/workflow-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "91e659bff5994fb582c8b220c65e4e7fa7b9eeb0"
+        "revision" : "b43f0a099a2b5a018450cc005da8b279c54ffa55"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
