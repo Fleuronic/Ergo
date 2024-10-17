@@ -1,6 +1,10 @@
 // Copyright © Fleuronic LLC. All rights reserved.
 
+#if swift(<5.9)
+import Workflow
+#else
 public import Workflow
+#endif
 
 public extension RenderContext {
 	func render<Rendering, Action: WorkflowAction & Sendable> (
