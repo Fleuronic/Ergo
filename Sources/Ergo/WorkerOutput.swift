@@ -3,7 +3,7 @@
 #if swift(<5.9)
 import ReactiveSwift
 #else
-public import ReactiveSwift
+@preconcurrency public import ReactiveSwift
 #endif
 
 public protocol WorkerOutput<Success> {
