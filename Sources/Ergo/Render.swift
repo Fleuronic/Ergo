@@ -15,7 +15,7 @@ public extension RenderContext {
 	) -> Rendering where Action.WorkflowType == WorkflowType {
 		workflows?.forEach { workflow in workflow.running(in: self) }
 		keyedWorkflows?.forEach { key, workflow in workflow.running(in: self, key: key) }
-
+		
 		let sink = makeSink(of: Action.self)
 		sideEffects?.forEach { key, action in
 			runSideEffect(key: key) { lifetime in
@@ -24,11 +24,11 @@ public extension RenderContext {
 						sink.send(action)
 					}
 				}
-
+				
 				lifetime.onEnded { task.cancel() }
 			}
 		}
-
+		
 		return render(sink)
 	}
 }
