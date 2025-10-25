@@ -5,7 +5,7 @@ let package = Package(
 	name: "Ergo",
 	platforms: [
 		.iOS(.v13),
-		.macOS(.v10_15),
+		.macOS(.v14),
 		.tvOS(.v13),
 		.watchOS(.v6)
 	],
@@ -16,7 +16,7 @@ let package = Package(
 		)
 	],
 	dependencies: [
-		.package(url: "https://github.com/Fleuronic/workflow-swift", branch: "main")
+		.package(url: "https://github.com/jordanekay/workflow-swift", branch: "main")
 	],
 	targets: [
 		.target(
@@ -31,7 +31,7 @@ let package = Package(
 
 for target in package.targets {
 	target.swiftSettings = [
-		.enableUpcomingFeature("ExistentialAny"),
-		.enableUpcomingFeature("InternalImportsByDefault")
+		.enableExperimentalFeature("StrictConcurrency"),
+		.enableUpcomingFeature("ExistentialAny")
 	]
 }
